@@ -1,0 +1,12 @@
+[
+  { "Id": 1, "username": "johndoe", "role": "Admin" },
+  { "Id": 2, "username": "janesmith", "role": "Editor" },
+  { "Id": 3, "username": "mikesanchez", "role": "User" },
+  { "Id": 4, "username": "sarah_lee", "role": "Moderator" },
+  { "Id": 5, "username": "alex_g", "role": "User" },
+  { "Id": 6, "username": "emily_b", "role": "Admin" },
+  { "Id": 7, "username": "david_k", "role": "Viewer" },
+  { "Id": 8, "username": "rachel_m", "role": "Editor" },
+  { "Id": 9, "username": "chris_t", "role": "User" },
+  { "Id": 10, "username": "anna_w", "role": "Moderator" }
+]
