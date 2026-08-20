@@ -1,22 +1,54 @@
 # codeit-mernstack
+
 we are going to create full stack web app using mern stack with the help of CodeIT
 
 # Express js
+
 - Minimalist, fast, unopinionated framework.
 - It simplifies the HTTP module of node.js
 
-## Packages are used 
+## Packages are used
+
 - Express Framework -> npm install express
 - Nodemon, as a dev devDependencies -> npm install --save-dev nodemon
 - DotEnv, for Environmental variables. -> npm install dotenv
 
 ## HTTP Methods
--GET
--POST
--PUT
--DELETE
--PATCH
 
-## Rest API
+-GET (Read/Fetch)
+-POST (Creat)
+-PUT (Update)
+-DELETE (Delete)
+-PATCH (Partisal Update)
+
+## Rest API (Representational State Transfer)
+
 JSON.stringify: JS Objet 2 JSON
 JSON.parse: JSON 2 JS Object
+
+JSON => JavaScript Object Notation => Lightweight string format.
+
+```
+
+Get users data: GET /users
+Create user: POST /users
+Create product: POST /products
+Update product: PUT /products/:id
+
+```
+
+## Layered Architecture Based Project Structure
+
+1. API Layer
+   a. Routes : Endpoints
+   b. Controllers : Request/Response
+   c. Middlewares : Auth
+2. Business Logic Layer
+   a. Services
+3. Data Layer
+   a. Models : Schemas
+
+- first request comes in API Layer
+  -- routes -> middleware -> controllers
+- seconds request goes to SERVICES Layer
+- third request goes to DATA Layer
