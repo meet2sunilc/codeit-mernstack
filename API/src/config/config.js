@@ -1,3 +1,4 @@
+//dotenv veriable configation
 import dotenv from "dotenv";
 
 dotenv.config(); //configuring dotenv module

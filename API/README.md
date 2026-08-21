@@ -2,24 +2,26 @@
 
 we are going to create full stack web app using mern stack with the help of CodeIT
 
-# Express js
-
-- Minimalist, fast, unopinionated framework.
-- It simplifies the HTTP module of node.js
-
 ## Packages are used
 
 - Express Framework -> npm install express
 - Nodemon, as a dev devDependencies -> npm install --save-dev nodemon
 - DotEnv, for Environmental variables. -> npm install dotenv
+- Mongo DB
+- Mongoose
+
+## Express js
+
+- Minimalist, fast, unopinionated framework.
+- It simplifies the HTTP module of node.js
 
 ## HTTP Methods
 
--GET (Read/Fetch)
--POST (Creat)
--PUT (Update)
--DELETE (Delete)
--PATCH (Partisal Update)
+- GET (Read/Fetch)
+- POST (Creat)
+- PUT (Update)
+- DELETE (Delete)
+- PATCH (Partisal Update)
 
 ## Rest API (Representational State Transfer)
 
