@@ -1,32 +1,20 @@
-import userService from "../services/user.services.js";
+import userServices from "../services/user.services.js";
 
-//getUserById function for user.routes.js => getUserById
-const getUsers = async (req, res)=>{
-  const users =  await userService.getUsers();
-  res.json(JSON.parse(users));
-}
-//findUser function for user.routes.js => findUser 
-const getUserById = async (req, res)=>{
-  const id = req.params.userId;
-  const user = await userService.getUserById(id);
-  
-  try 
-  {
-    if(!user){
-      return res.status(404).send("User not found");
-    }
-    res.status(200).json(user);
-
-  } 
-  
-  catch (error)
-  {
-    return res.status(500).send("Internal Server Error No.1")
-  }
-}
-
-export  
-{
-  getUsers, 
-  getUserById
+const users = async (req, res) => {
+  const data = await userServices.users();
+  res.json(JSON.parse(data));
 };
+
+const userById = async (req, res) => {
+  const id = req.params.userId;
+  const data = await userServices.userById(id);
+  try {
+    if (data.length) {
+      res.send(data);
+    }
+    return res.status(400).send("User not found");
+  } catch (err) {
+    res.status(400).send(err);
+  }
+};
+export default { users, userById };

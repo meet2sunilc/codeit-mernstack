@@ -1,18 +1,19 @@
 import fs from "fs/promises";
 
-const getUsers = async ()=>{
-  const users = await fs.readFile("data/users.json", "utf-8")
-  return users;
-}
+const users = async () => {
+  const data = await fs.readFile("./data/users.json", "utf-8");
+  return data;
+};
 
-const getUserById = async (id)=>{
-  const users = await fs.readFile("data/users.json", "utf-8")
-  const user = JSON.parse(users).find((users)=>users.Id==id);
-  return user;
-}
+const userById = async (id) => {
+  const users = await fs.readFile("./data/users.json", "utf-8");
+  // console.log(users);
+  console.log(id);
 
-export default
-{
-  getUserById, 
-  getUsers
-}
+  const data = JSON.parse(users).filter((users) => users.Id == id);
+  console.log(data);
+
+  return data;
+};
+
+export default { users, userById };

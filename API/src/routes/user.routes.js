@@ -1,11 +1,9 @@
 import express from "express";
-import {getUsers, getUserById} from "../controllers/user.controllers.js";
+import userControllers from "../controllers/user.controllers.js";
+
 const router = express.Router();
 
+router.get("/", userControllers.users);
+router.get("/:userId", userControllers.userById);
 
-//Router for display all users:
-router.get("/users", getUsers);
-
-//Creating dynamic routes params:
-router.get("/users/:userId", getUserById);
 export default router;
