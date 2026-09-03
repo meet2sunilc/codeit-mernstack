@@ -4,9 +4,9 @@ we are going to create full stack web app using mern stack with the help of Code
 
 ## Packages are used
 
-- Express Framework -> npm install express
-- Nodemon, as a dev devDependencies -> npm install --save-dev nodemon
-- DotEnv, for Environmental variables. -> npm install dotenv
+- Express Framework -> `npm install express`
+- Nodemon, as a dev devDependencies -> `npm install --save-dev nodemon`
+- DotEnv, for Environmental variables. -> `npm install dotenv`
 - Mongo DB
 - Mongoose
 
@@ -54,3 +54,23 @@ Update product: PUT /products/:id
   -- routes -> middleware -> controllers
 - seconds request goes to SERVICES Layer
 - third request goes to DATA Layer
+
+## MONGO db
+
+- Non relational database.
+- Data are stored in collections (tables) & documents (rows).
+
+### Tools used
+
+- Local : MongoDB community for DB and Compass for GUI.
+- Cloud : MongoDB Atlas
+
+### MongoDB Queries
+
+- `show dbs` : Listing all DataBase.
+- `use` <dbName> : Create or Switch the Database.
+- `show collections` : Listing all collection.
+- `db.users.insertOne({name: "Ram"})` : It use users collection and insert one record into current database.
+- `db.users.insertMany([{name: "Sita"}, {name: "Hari"}])` : It use users collection and insert one record into current database.
+- `db.users.find()`
+- `db.users.find({name:"Ram"})`
