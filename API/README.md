@@ -55,7 +55,7 @@ Update product: PUT /products/:id
 - seconds request goes to SERVICES Layer
 - third request goes to DATA Layer
 
-## MONGO db
+## MongoDB
 
 - Non relational database.
 - Data are stored in collections (tables) & documents (rows).
@@ -70,7 +70,42 @@ Update product: PUT /products/:id
 - `show dbs` : Listing all DataBase.
 - `use` <dbName> : Create or Switch the Database.
 - `show collections` : Listing all collection.
-- `db.users.insertOne({name: "Ram"})` : It use users collection and insert one record into current database.
-- `db.users.insertMany([{name: "Sita"}, {name: "Hari"}])` : It use users collection and insert one record into current database.
+
+1. Creat
+
+- `db.users.insertOne({name: "Ram"})`
+- `db.users.insertMany([{name: "Sita"}, {name: "Hari"}])`
+
+2. Read
+
 - `db.users.find()`
+- `db.users.find().limit(2)`//limit the search result.
+- `db.users.find().skip(2)`//skip the number of result.
+- `db.users.find().sort({name:1})` //| ASC = 1, DES = -1
 - `db.users.find({name:"Ram"})`
+- `db.users.findOne({age:"20"})`
+
+3. Update
+
+- `db.users.updateOne({age:"20"}, {$set:{age: 23}})`
+- `db.users.updateMany([{age:"20"}, {$set:{age: 23}}])`
+
+4. Delete
+
+- `db.users.deleteOne({_id: ObjectId('6a9acd5812073debfc7f44f3')})`
+
+### Complex Filter
+
+- `db.user.find({name:{$eq:'raju'}})` //equal to
+- `db.user.find({age:{$ne:29}})` //not equal to
+- `db.user.find({age:{$gt:29}})` //greter than
+- `db.user.find({age:{$gte:29}})` //greter than or equal to
+- `db.user.find({age:{$lt:29}})` //less than
+- `db.user.find({age:{$lte:29}})` //less than or equal to
+- `db.user.find({$and:[{name:"rasmila"}, {age: 36}]})` //And operation
+- `db.user.find({$or:[{name:"rasmila"}, {age: 36}]})` //or operation
+
+## Mongoose
+
+- ODM (Object Data Modeling) of MongoDB for node.js
+- Create schema (Properties or rules of a data/entity)
