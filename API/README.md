@@ -107,5 +107,10 @@ Update product: PUT /products/:id
 
 ## Mongoose
 
+`npm install mongoosee `
+
 - ODM (Object Data Modeling) of MongoDB for node.js
 - Create schema (Properties or rules of a data/entity)
+- Validate Schema.
+- Create models (usable form of schema) using schema.
+- Relationship.
