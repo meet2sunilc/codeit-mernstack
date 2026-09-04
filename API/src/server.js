@@ -1,34 +1,16 @@
 import express from "express";
-import fs from "fs/promises";
-import config from "./config/config.js"
+import config from "./config/config.js";
+import userRoutes from "./routes/user.routes.js";
+import connectDatabase from "./config/database.js";
 
+//creating app using express
 const app = express();
 
-//Creating routes
-app.get("/",(req, res)=>{
-    res.send("<h1>Home Page</h1>")
-});
+//Connection DB using
+connectDatabase();
 
-app.get("/about",(req, res)=>{
-    res.send("<h2>About page</h2>")
-})
+app.use("/users", userRoutes);
 
-//an example of readig data from file using filesystem
-app.get("/users",async (req, res)=>{
-   const users = await fs.readFile("data/users.json","utf-8");
-   res.json(JSON.parse(users)); //returns json format to javaScript
-});
-
-//Dynamic routs params 
-app.get("/users/:userId",async (req, res)=>{
-    const id = req.params.userId;
-    const users = await fs.readFile("data/users.json", "utf-8")
-    const user = JSON.parse(users).find((users)=>users.Id==id);
-    res.send(user);
-});
-
-//Creating backend server, at port 3000
-app.listen(config.port, ()=>{
-    console.log(`server is running at port ${config.port}`);
-    
+app.listen(config.port, () => {
+  console.log(`We are listening at port ${config.port}`);
 });
