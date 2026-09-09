@@ -2,19 +2,30 @@ import userServices from "../services/user.services.js";
 
 const users = async (req, res) => {
   const data = await userServices.users();
-  res.json(JSON.parse(data));
+  // console.log(data);
+  res.send(data);
 };
 
 const userById = async (req, res) => {
-  const id = req.params.userId;
-  const data = await userServices.userById(id);
+  const data = await userServices.userById(req.params.userId);
+  // console.log(data);
+
   try {
-    if (data.length) {
-      res.send(data);
+    if (!data) {
+      return res.status(400).send("User not found");
     }
-    return res.status(400).send("User not found");
+    res.send(data);
   } catch (err) {
     res.status(400).send(err);
   }
 };
-export default { users, userById };
+
+const createUser = async (req, res) => {
+  try {
+    const createdUser = await userServices.createUser(req.body);
+    res.status(201).json(createdUser);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+export default { users, userById, createUser };

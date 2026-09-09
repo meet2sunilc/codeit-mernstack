@@ -1,19 +1,17 @@
-import fs from "fs/promises";
+import User from "../models/User.js";
 
 const users = async () => {
-  const data = await fs.readFile("./data/users.json", "utf-8");
-  return data;
+  return await User.find();
 };
 
 const userById = async (id) => {
-  const users = await fs.readFile("./data/users.json", "utf-8");
-  // console.log(users);
-  console.log(id);
-
-  const data = JSON.parse(users).filter((users) => users.Id == id);
-  console.log(data);
-
-  return data;
+  return await User.findById(id);
+  // const user = await User.findById(id);
+  // console.log(user);
+  // return user;
 };
 
-export default { users, userById };
+const createUser = async (input) => {
+  return await User.create(input);
+};
+export default { users, userById, createUser };

@@ -2,44 +2,7 @@
 
 we are going to create full stack web app using mern stack with the help of CodeIT
 
-## Packages are used
-
-- Express Framework -> `npm install express`
-- Nodemon, as a dev devDependencies -> `npm install --save-dev nodemon`
-- DotEnv, for Environmental variables. -> `npm install dotenv`
-- Mongo DB
-- Mongoose
-
-## Express js
-
-- Minimalist, fast, unopinionated framework.
-- It simplifies the HTTP module of node.js
-
-## HTTP Methods
-
-- GET (Read/Fetch)
-- POST (Creat)
-- PUT (Update)
-- DELETE (Delete)
-- PATCH (Partisal Update)
-
-## Rest API (Representational State Transfer)
-
-JSON.stringify: JS Objet 2 JSON
-JSON.parse: JSON 2 JS Object
-
-JSON => JavaScript Object Notation => Lightweight string format.
-
-```
-
-Get users data: GET /users
-Create user: POST /users
-Create product: POST /products
-Update product: PUT /products/:id
-
-```
-
-## Layered Architecture Based Project Structure
+## Layered Architecture Based Project Strecture
 
 1. API Layer
    a. Routes : Endpoints
@@ -54,6 +17,45 @@ Update product: PUT /products/:id
   -- routes -> middleware -> controllers
 - seconds request goes to SERVICES Layer
 - third request goes to DATA Layer
+
+## Packages are used
+
+- Express Framework -> `npm install express`
+- Nodemon, as a dev devDependencies -> `npm install --save-dev nodemon`
+- DotEnv, for Environmental variables. -> `npm install dotenv`
+- Mongo DB
+- Mongoose
+- multer, for file upload `npm install multer`
+
+## Express js
+
+- Minimalist, fast, unopinionated framework.
+- It simplifies the HTTP module of node.js
+
+## HTTP Methods
+
+- GET (Read/Fetch)
+- POST (Creat)
+- PUT (Update)
+- DELETE (Delete)
+- PATCH (Partisal Update)
+
+```
+
+Get users data: GET /users
+Create user: POST /users
+Create product: POST /products
+Update product: PUT /products/:id
+Delete product: DELETE /products/:id
+
+```
+
+## Rest API (Representational State Transfer)
+
+JSON.stringify: JS Objet 2 JSON
+JSON.parse: JSON 2 JS Object
+
+JSON => JavaScript Object Notation => Lightweight string format.
 
 ## MongoDB
 
@@ -114,3 +116,23 @@ Update product: PUT /products/:id
 - Validate Schema.
 - Create models (usable form of schema) using schema.
 - Relationship.
+
+## Authentication/Authorization
+
+### Authentication
+
+- login.
+- register.
+- forget passowrd.
+- password update/change.
+- password reset.
+
+### Session
+
+### cookie
+
+### localstorage
+
+## Postman
+
+## HTTP Status codes
