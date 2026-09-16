@@ -9,6 +9,9 @@ router
   .route("/")
   .get(userControllers.users)
   .post(upload.none(), userControllers.createUser);
-router.route("/:userId").get(userControllers.userById);
+router
+  .route("/:userId")
+  .get(userControllers.userById)
+  .delete(userControllers.deleteUserById);
 
 export default router;

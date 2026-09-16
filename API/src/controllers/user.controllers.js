@@ -9,15 +9,7 @@ const users = async (req, res) => {
 const userById = async (req, res) => {
   const data = await userServices.userById(req.params.userId);
   // console.log(data);
-
-  try {
-    if (!data) {
-      return res.status(400).send("User not found");
-    }
-    res.send(data);
-  } catch (err) {
-    res.status(400).send(err);
-  }
+  res.status(200).json(data);
 };
 
 const createUser = async (req, res) => {
@@ -28,4 +20,9 @@ const createUser = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
-export default { users, userById, createUser };
+
+const deleteUserById = async (req, res) => {
+  const data = await userServices.deleteUserById(req.params.userId);
+  res.json(data);
+};
+export default { users, userById, createUser, deleteUserById };

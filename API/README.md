@@ -26,6 +26,7 @@ we are going to create full stack web app using mern stack with the help of Code
 - Mongo DB
 - Mongoose
 - multer, for file upload `npm install multer`
+- bcrypt, for password hasing`npm i bcrypt`
 
 ## Express js
 
@@ -116,6 +117,8 @@ JSON => JavaScript Object Notation => Lightweight string format.
 - Validate Schema.
 - Create models (usable form of schema) using schema.
 - Relationship.
+
+## Cryptography
 
 ## Authentication/Authorization
 
