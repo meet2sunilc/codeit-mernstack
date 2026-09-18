@@ -16,7 +16,9 @@ What packages and services are used for web app development?
    `npm i zod`
    e. multer : Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency.
    `npm i multer`
-   f. bcrypt: `npm i bcrypt`
+   f. `npm i bcrypt` : Hasing password.
+   g. `npm i jsonwebtoken` : Authentication/Authorization
+   h. `npm i jsonwebtoken`
 
 2. devDependencies
    a. nodemon : `npm install --save-dev nodemon`

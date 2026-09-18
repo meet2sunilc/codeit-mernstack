@@ -1,6 +1,6 @@
 import Product from "../models/Product.js";
 
-const createProduct = async (input) => {
+const createProduct = async (input, user) => {
   console.log(input);
 
   const createdProduct = await Product.create({
@@ -8,6 +8,7 @@ const createProduct = async (input) => {
     brand: input.brand,
     category: input.category,
     price: input.price,
+    createdBy: user,
   });
   return createdProduct;
 };

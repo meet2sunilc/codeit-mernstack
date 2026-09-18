@@ -122,6 +122,34 @@ JSON => JavaScript Object Notation => Lightweight string format.
 
 ## Authentication/Authorization
 
+### Auth Process
+
+1. Login/Register success.
+2. Generate token (JWT)
+3. Store token: Cookie Storage, Session Storage, Local Storage
+4. Append the JWT in every request.
+5. Verify the token and authenticate/authorize the user (Middleware)
+
+### Storage
+
+1. Cookie Storage
+
+- Size: 4 KB
+- Avilable: Browser& Server
+- Expiry: Need to set.
+
+2. Session Storage
+
+- Size 5 MB
+- Avilable: Browser only
+- Expiry: On brower tab close.
+
+3. Local Storage
+
+- Size 5 MB
+- Avilable: Browser only
+- Expiry: When unstall browser or clear storage.
+
 ### Authentication
 
 - login.
@@ -130,12 +158,28 @@ JSON => JavaScript Object Notation => Lightweight string format.
 - password update/change.
 - password reset.
 
-### Session
+## Middleware
 
-### cookie
+- Function (controller) that lies between request and response.
+- Function that has access of both request and response object, and can modify them.
+- It has additional functionality to go to the next() call.
 
-### localstorage
+Browser ------------> Request --------------> Server
+Middleware Middleware Middleware
+Server -------------> Response -------------> Browser
+
+### Usage
+
+- Logging.
+- Authentication & Authorization.
+- Request and Response object modification.
+- Error handling
+- Data validation
 
 ## Postman
 
 ## HTTP Status codes
+
+## Notes
+
+- Front end ma kam garda JWT lai LOCAL STORAGE ma garera dekhauchhu.

@@ -1,6 +1,7 @@
-import express from "express";
-import productControllers from "../controllers/product.controllers.js";
 import multer from "multer";
+import express from "express";
+import { auth } from "../middlewares/auth.middlewares.js";
+import productControllers from "../controllers/product.controllers.js";
 
 const upload = multer({ dest: "uploads/" });
 
@@ -8,8 +9,8 @@ const router = express.Router();
 
 router
   .route("/")
-  .post(upload.none(), productControllers.createProduct)
-  .get(productControllers.getAllProducts);
+  .get(productControllers.getAllProducts)
+  .post(upload.none(), auth, productControllers.createProduct);
 
 export default router;
 

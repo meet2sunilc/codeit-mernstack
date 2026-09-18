@@ -2,7 +2,7 @@ import productServices from "../services/product.services.js";
 
 const createProduct = async (req, res, next) => {
   try {
-    const data = await productServices.createProduct(req.body);
+    const data = await productServices.createProduct(req.body, user);
     res.status(201).json(data);
   } catch (error) {
     return res.status(400).json({

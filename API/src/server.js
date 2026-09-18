@@ -5,6 +5,7 @@ import userRoutes from "./routes/user.routes.js";
 import connectDatabase from "./config/database.js";
 import productRoutes from "./routes/product.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import logger from "./middlewares/logger.middlewares.js";
 
 //creating app using express
 const app = express();
@@ -14,6 +15,8 @@ app.use(express.json());
 // To parse incoming HTML form submissions (URL-encoded data)
 app.use(express.urlencoded({ extended: true }));
 
+//Global Logger middleware
+app.use(logger);
 //Store uploaded files in a specific folder on your server
 const upload = multer({ dest: "uploads/" });
 

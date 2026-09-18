@@ -14,12 +14,20 @@ const login = async (input) => {
     throw { success: false, message: "Invalid credentials" };
     return;
   }
-  return user;
+  const data = {
+    _id: user._id,
+    userName: user.userName,
+    address: user.address,
+    email: user.email,
+    phoneNumber: user.phoneNumber,
+    role: user.role,
+  };
+  return data;
 };
 
 const register = async (input) => {
   const hashedPassword = await bcrypt.hash(input.password, 10);
-  return await User.create({
+  const user = await User.create({
     userName: input.userName,
     email: input.email,
     password: hashedPassword,
@@ -28,6 +36,15 @@ const register = async (input) => {
       city: input.city,
     },
   });
+  const data = {
+    _id: user._id,
+    userName: user.userName,
+    address: user.address,
+    email: user.email,
+    phoneNumber: user.phoneNumber,
+    role: user.role,
+  };
+  return data;
 };
 
 export default { login, register };
