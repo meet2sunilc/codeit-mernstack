@@ -1,34 +1,51 @@
 import express from "express";
-import fs from "fs/promises";
-import config from "./config/config.js"
+import multer from "multer";
+import config from "./config/config.js";
+import userRoutes from "./routes/user.routes.js";
+import connectDatabase from "./config/database.js";
+import productRoutes from "./routes/product.routes.js";
+import authRoutes from "./routes/auth.routes.js";
+import logger from "./middlewares/logger.middlewares.js";
 
+//creating app using express
 const app = express();
 
-//Creating routes
-app.get("/",(req, res)=>{
-    res.send("<h1>Home Page</h1>")
+// To parse incoming JSON payloads
+app.use(express.json());
+// To parse incoming HTML form submissions (URL-encoded data)
+app.use(express.urlencoded({ extended: true }));
+
+//Global Logger middleware
+app.use(logger);
+//Store uploaded files in a specific folder on your server
+const upload = multer({ dest: "uploads/" });
+
+//Home route
+app.get("/", (req, res) => {
+  res.send("Welcome to Home Page");
 });
 
-app.get("/about",(req, res)=>{
-    res.send("<h2>About page</h2>")
-})
+//API Routes
+app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/auth", authRoutes);
 
-//an example of readig data from file using filesystem
-app.get("/users",async (req, res)=>{
-   const users = await fs.readFile("data/users.json","utf-8");
-   res.json(JSON.parse(users)); //returns json format to javaScript
+// Global Error Handling Middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ success: false, message: "Internal Server Error" });
 });
 
-//Dynamic routs params 
-app.get("/users/:userId",async (req, res)=>{
-    const id = req.params.userId;
-    const users = await fs.readFile("data/users.json", "utf-8")
-    const user = JSON.parse(users).find((users)=>users.Id==id);
-    res.send(user);
-});
+const startServer = async () => {
+  try {
+    await connectDatabase();
+    app.listen(config.port, () => {
+      console.log(`Server listening at port ${config.port}`);
+    });
+  } catch (error) {
+    console.error("Failed to connect to database:", error);
+    process.exit(1);
+  }
+};
 
-//Creating backend server, at port 3000
-app.listen(config.port, ()=>{
-    console.log(`server is running at port ${config.port}`);
-    
-});
+startServer();

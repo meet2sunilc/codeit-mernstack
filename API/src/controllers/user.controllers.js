@@ -1,32 +1,28 @@
-import userService from "../services/user.services.js";
+import userServices from "../services/user.services.js";
 
-//getUserById function for user.routes.js => getUserById
-const getUsers = async (req, res)=>{
-  const users =  await userService.getUsers();
-  res.json(JSON.parse(users));
-}
-//findUser function for user.routes.js => findUser 
-const getUserById = async (req, res)=>{
-  const id = req.params.userId;
-  const user = await userService.getUserById(id);
-  
-  try 
-  {
-    if(!user){
-      return res.status(404).send("User not found");
-    }
-    res.status(200).json(user);
-
-  } 
-  
-  catch (error)
-  {
-    return res.status(500).send("Internal Server Error No.1")
-  }
-}
-
-export  
-{
-  getUsers, 
-  getUserById
+const users = async (req, res) => {
+  const data = await userServices.users();
+  // console.log(data);
+  res.send(data);
 };
+
+const userById = async (req, res) => {
+  const data = await userServices.userById(req.params.userId);
+  // console.log(data);
+  res.status(200).json(data);
+};
+
+const createUser = async (req, res) => {
+  try {
+    const createdUser = await userServices.createUser(req.body);
+    res.status(201).json(createdUser);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+const deleteUserById = async (req, res) => {
+  const data = await userServices.deleteUserById(req.params.userId);
+  res.json(data);
+};
+export default { users, userById, createUser, deleteUserById };

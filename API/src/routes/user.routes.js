@@ -1,11 +1,17 @@
 import express from "express";
-import {getUsers, getUserById} from "../controllers/user.controllers.js";
+import userControllers from "../controllers/user.controllers.js";
+import multer from "multer";
+
 const router = express.Router();
+const upload = multer();
 
+router
+  .route("/")
+  .get(userControllers.users)
+  .post(upload.none(), userControllers.createUser);
+router
+  .route("/:userId")
+  .get(userControllers.userById)
+  .delete(userControllers.deleteUserById);
 
-//Router for display all users:
-router.get("/users", getUsers);
-
-//Creating dynamic routes params:
-router.get("/users/:userId", getUserById);
 export default router;
